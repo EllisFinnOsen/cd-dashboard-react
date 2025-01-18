@@ -1,12 +1,19 @@
 .topCardsContainer {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 
-    @media screen and (min-width: 768px) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .dataCard {
-    padding: 20px;
+  padding: 20px;
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
 }
