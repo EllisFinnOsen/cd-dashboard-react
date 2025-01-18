@@ -4,20 +4,22 @@ import Header from "@/components/Header";
 import SideMenu from "@/components/SideMenu";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import scss from '@/styles/Home.module.scss'
+import React from "react";
 
 
-export default function Home() {
+const Home: React.FC = () => {
   const { data: session } = useSession();
 
   return (
     <>
       <Head>
-        <title>Data Dashboard</title>
+        <title>DataSoft - Data Dashboard</title>
         <meta name="description" content="Data Dashboard"/>
         <meta name ="viewport" content="width=devide-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico"/>
       </Head>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className={scss.main}>
 
         <Header />
         {
@@ -39,3 +41,4 @@ export default function Home() {
     
   );
 }
+export default Home;
