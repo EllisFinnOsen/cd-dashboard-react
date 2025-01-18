@@ -13,11 +13,17 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import ThemeToggleButton from "@/components/ThemeToggleButton";
+import { useMediaQuery } from "@mui/material";
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const  Header = () => {
+export type HeaderProps = {
+  ColorModeContext: React.Context<{ toggleColorMode: () => void; }>,
+}
+
+const Header = (props: HeaderProps) => {
+  const {ColorModeContext} = props;
   const { data: session } = useSession();
     const userProfileImg = session?.user?.image as string;
     //<Avatar alt={session?.user?.name as string} src={userProfileImg} />
@@ -40,6 +46,9 @@ const  Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const mobileCheck = useMediaQuery('(min-width: 500px');
+  const tabletCheck = useMediaQuery('(min-width: 768px)');
 
   return (
     <AppBar position="static">
@@ -106,7 +115,7 @@ const  Header = () => {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', md: 'flex' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -128,9 +137,18 @@ const  Header = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{paddingRight: 2.5}}>
+          {
+            tabletCheck && (
+              <Box sx={{paddingRight: 2.5}}>
             <Typography>Signed in as {session?.user?.email}</Typography>
           </Box>
+
+            )
+          }
+          
+
+          <ThemeToggleButton ColorModeContext={ColorModeContext}/>
+
           <Box sx={{ flexGrow: 0 }}>
             
             
