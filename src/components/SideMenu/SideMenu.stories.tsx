@@ -3,7 +3,7 @@ import SideMenu from './SideMenu';
 
 export default{
     children: '',
-    title: 'Compontent/SideMenu',
+    title: 'Component/SideMenu',
     component: SideMenu,
 };
 

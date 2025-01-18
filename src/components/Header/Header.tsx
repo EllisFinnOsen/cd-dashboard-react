@@ -1,36 +1,35 @@
-import { useSession, signIn, signOut } from "next-auth/react"
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import ThemeToggleButton from "@/components/ThemeToggleButton";
+import AdbIcon from "@mui/icons-material/Adb";
 import { useMediaQuery } from "@mui/material";
-
-const pages = ['Products', 'Pricing', 'Blog'];
+import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import { signIn, signOut, useSession } from "next-auth/react";
+import * as React from "react";
 
 export type HeaderProps = {
-  ColorModeContext: React.Context<{ toggleColorMode: () => void; }>,
-}
+  ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
+};
 
 const Header = (props: HeaderProps) => {
-  const {ColorModeContext} = props;
+  const { ColorModeContext } = props;
   const { data: session } = useSession();
-    const userProfileImg = session?.user?.image as string;
-    //<Avatar alt={session?.user?.name as string} src={userProfileImg} />
+  const userProfileImg = session?.user?.image as string;
+  //<Avatar alt={session?.user?.name as string} src={userProfileImg} />
 
-
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -47,14 +46,14 @@ const Header = (props: HeaderProps) => {
     setAnchorElUser(null);
   };
 
-  const mobileCheck = useMediaQuery('(min-width: 500px');
-  const tabletCheck = useMediaQuery('(min-width: 768px)');
+  const mobileCheck = useMediaQuery("(min-width: 500px)");
+  const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ marginBottom: "40px" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -62,52 +61,16 @@ const Header = (props: HeaderProps) => {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
-          >
-            
-          </Typography>
+          ></Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -115,74 +78,64 @@ const Header = (props: HeaderProps) => {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
+              display: { xs: "none", md: "flex" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             DataSoft
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          {
-            tabletCheck && (
-              <Box sx={{paddingRight: 2.5}}>
-            <Typography>Signed in as {session?.user?.email}</Typography>
-          </Box>
+          {tabletCheck && (
+            <Box sx={{ paddingRight: 2.5, marginLeft: "auto" }}>
+              <Typography>
+                {session?.user?.email
+                  ? `Signed in as ${session.user.email}`
+                  : "Not Signed In"}
+              </Typography>
+            </Box>
+          )}
 
-            )
-          }
-          
-
-          <ThemeToggleButton ColorModeContext={ColorModeContext}/>
+          <ThemeToggleButton ColorModeContext={ColorModeContext} />
 
           <Box sx={{ flexGrow: 0 }}>
-            
-            
             <Tooltip title="Open profile settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={session?.user?.name as string} src={userProfileImg} />
+                <Avatar
+                  alt={session?.user?.name as string}
+                  src={userProfileImg}
+                />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              
-                <MenuItem onClick={() => session ? signOut() : signIn()}>
-                  <Typography sx={{ textAlign: 'center' }}>{session ? 'Logout' : 'Login'}</Typography>
-                </MenuItem>
-              
+              <MenuItem onClick={() => (session ? signOut() : signIn())}>
+                <Typography sx={{ textAlign: "center" }}>
+                  {session ? "Logout" : "Login"}
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 export default Header;
