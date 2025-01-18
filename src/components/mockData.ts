@@ -19,7 +19,7 @@ export const doughnutChartData = {
     {
       label: "Transaction Dataset",
       data: [300, 50, 100],
-      backgroundColor: ["rgb(255,137,168)", "rgb(178,3,106)", "rgb(165,7,42)"],
+      backgroundColor: ["rgb(165,7,42)", "rgb(3, 93, 178)", "rgb(218, 196, 5)"],
       hoverOffset: 4,
     },
   ],
