@@ -1,16 +1,20 @@
 {
   "name": "cd-dashboard-react",
   "version": "0.1.0",
+  "homepage": "https://ellisfinnosen.github.io/cd-dashboard-react/",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.7.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.0",
@@ -19,6 +23,7 @@
     "@mui/x-data-grid-generator": "^7.24.0",
     "@types/chart.js": "^2.9.41",
     "chart.js": "^4.4.7",
+    "mongodb": "^6.12.0",
     "next": "15.1.4",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -40,6 +45,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "eslint-plugin-storybook": "^0.11.2",
+    "gh-pages": "^6.3.0",
     "postcss": "^8",
     "prettier": "^3.4.2",
     "sass": "^1.83.4",
