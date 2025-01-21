@@ -1,3 +1,23 @@
+## About The Project
+
+![project heading image](https://github.com/EllisFinnOsen/cd-dashboard-react/blob/main/github-images/Header.png?raw=true)
+
+
+The primary goal of this project was to gain more familiarty with React, Next.js, and Material.ui.
+While the data shown is mock data and hard coded, the project taught me the basics of building components,
+Managing states, and most especially authentication layers.  The project includes middleware that prevents users
+who are not logged in from seeing "sensitive" data and evading the authentication layer.
+
+
+![Technology Used](https://github-readme-tech-stack.vercel.app/api/cards?title=Technology+Used&lineCount=1&width=700&line1=react%2Creact%2Cffffff%3Bnext.js%2Cnext.js%2Cffffff%3Bmui%2Cmui%2Cffffff%3Btypescript%2Ctypescript%2Cffffff%3Bsass%2Csass%2Cffffff%3Bjavascript%2Cjavascript%2Cffffff%3B)
+
+
+
+
+![project mockup image](https://github.com/EllisFinnOsen/cd-dashboard-react/blob/main/github-images/Mockup.png?raw=true)
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
@@ -38,3 +58,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+
+## Acknowledgements:
+- [Frontend Now on Youtube](https://www.youtube.com/watch?v=E9BYc5_etOk&list=PLo-5F4Vt4vYTKr_BHrLr59Uh4MQegoWdH)
